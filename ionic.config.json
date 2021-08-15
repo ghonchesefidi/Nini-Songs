@@ -1,0 +1,7 @@
+{
+  "name": "Nini Songs",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
