@@ -1,38 +1,93 @@
 <template>
   <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>پخش آهنگ</ion-title>
-      </ion-toolbar>
-    </ion-header>
     <ion-content :fullscreen="true">
+      <ion-list>
+        <ion-item :router-link="'/tabs/tab3/' + item.id" lines="none" class="list-main-section"
+                  v-for="item in contentData" :key="item.name.english">
+          <ion-img slot="start" :src="item.image"></ion-img>
+          <ion-label>
+            <h2>{{ item.name.persian }}</h2>
+            <p>{{ item.name.english }}</p>
+          </ion-label>
+          <ion-icon class="list-play-icon" :icon="play"/>
+        </ion-item>
+      </ion-list>
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">پخش آهنگ</ion-title>
+          <ion-title size="large">Tab 2</ion-title>
         </ion-toolbar>
       </ion-header>
-      <audio controls class="player">
-        <source src="https://nini-songs.s3.ir-thr-at1.arvanstorage.com/test1" type="audio/mpeg">
-      </audio>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import {IonPage, IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/vue';
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonLabel,
+  IonItem,
+  IonList,
+  IonImg,
+  IonIcon,
+  onIonViewWillEnter
+} from '@ionic/vue';
+// import {onBeforeMount} from 'vue';
+
+import contentData from '../content/contentData'
+import {play} from 'ionicons/icons';
+
 
 export default {
-  name: 'Tab2',
-  components: {IonHeader, IonToolbar, IonTitle, IonContent, IonPage}
+  name: 'Tab3',
+  components: {
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonPage,
+    IonLabel,
+    IonItem,
+    IonList,
+    IonImg,
+    IonIcon
+  },
+  setup() {
+    onIonViewWillEnter(() => {
+      console.log(contentData)
+    })
+    return {contentData, play}
+  }
 }
 </script>
 <style scoped>
-.player {
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.list-play-icon {
+  font-size: 17px;
+  vertical-align: middle;
+  color: #8995ab;
+  transform: rotate(
+      180deg
+  );
+  border: 1px solid #8995ab;
+  border-radius: 100%;
+  padding: 10px;
+}
+
+ion-item::part(native) {
+  padding: 20px 10px;
+  --background-activated: #f2f5fe;
+  --background-hover: #f2f5fe;
+}
+
+ion-img {
+  display: inline-block;
+  width: 60px;
+}
+
+ion-img::part(image) {
+  border-radius: 5px;
 }
 </style>
