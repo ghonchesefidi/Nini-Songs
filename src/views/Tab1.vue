@@ -1,16 +1,6 @@
 <template>
   <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>معرفی</ion-title>
-      </ion-toolbar>
-    </ion-header>
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">معرفی</ion-title>
-        </ion-toolbar>
-      </ion-header>
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -43,7 +33,7 @@
 
 <script lang="ts">
 import {
-  IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
+  IonPage, IonContent,
   IonModal, IonIcon, IonImg, IonText, IonGrid, IonRow, IonCol
 } from '@ionic/vue';
 import {defineComponent, ref} from 'vue';
@@ -52,7 +42,7 @@ import IntroInternetModal from "@/components/IntroInternetModal.vue"
 
 export default defineComponent({
   components: {
-    IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonModal, IonIcon, IonImg,
+    IonContent, IonPage, IonModal, IonIcon, IonImg,
     IonText, IonGrid, IonRow, IonCol, IntroInternetModal
   },
   setup() {

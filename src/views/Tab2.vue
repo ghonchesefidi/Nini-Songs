@@ -12,11 +12,6 @@
           <ion-icon class="list-play-icon" :icon="play"/>
         </ion-item>
       </ion-list>
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 2</ion-title>
-        </ion-toolbar>
-      </ion-header>
     </ion-content>
   </ion-page>
 </template>
@@ -24,19 +19,13 @@
 <script lang="ts">
 import {
   IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
   IonContent,
   IonLabel,
   IonItem,
   IonList,
   IonImg,
   IonIcon,
-  onIonViewWillEnter
 } from '@ionic/vue';
-// import {onBeforeMount} from 'vue';
-
 import contentData from '../content/contentData'
 import {play} from 'ionicons/icons';
 
@@ -44,9 +33,6 @@ import {play} from 'ionicons/icons';
 export default {
   name: 'Tab3',
   components: {
-    IonHeader,
-    IonToolbar,
-    IonTitle,
     IonContent,
     IonPage,
     IonLabel,
@@ -56,9 +42,6 @@ export default {
     IonIcon
   },
   setup() {
-    onIonViewWillEnter(() => {
-      console.log(contentData)
-    })
     return {contentData, play}
   }
 }
