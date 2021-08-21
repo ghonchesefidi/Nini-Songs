@@ -2,7 +2,7 @@
   <ion-page>
     <ion-content :fullscreen="true">
       <ion-list>
-        <ion-item :router-link="'/tabs/tab3/' + item.id" lines="none" class="list-main-section"
+        <ion-item :href="'/tabs/tab3/' + item.id" lines="none" class="list-main-section"
                   v-for="item in contentData" :key="item.name.english">
           <ion-img slot="start" :src="item.image"></ion-img>
           <ion-label>
@@ -61,9 +61,14 @@ export default {
 
 ion-item::part(native) {
   padding: 20px 10px;
-  --background-activated: #f2f5fe;
-  --background-hover: #f2f5fe;
+  --background-activated: var(--ion-color-primary);
+  --background-activated-opacity: 0.2;
+  --background-hover: var(--ion-color-primary);
+  --background-hover-opacity: 0.2;
+  --background-focused: var(--ion-color-primary);
+  --background-focused-opacity: 0.2;
 }
+
 
 ion-img {
   display: inline-block;

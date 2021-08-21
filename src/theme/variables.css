@@ -5,12 +5,12 @@ http://ionicframework.com/docs/theming/ */
 :root {
   --ion-font-family: IRANSans;
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #a46ebe;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-shade: #a46ebe;
+  --ion-color-primary-tint: #a46ebe;
 
   /** secondary **/
   --ion-color-secondary: #3dc2ff;

@@ -14,7 +14,7 @@
           <ion-icon class="player-action-btn" :icon="playSkipBackCircle"/>
         </div>
       </div>
-      <audio preload="metadata" ref="audio">
+      <audio class="ion-hide" preload="metadata" ref="audio">
         <source :src="selectedSong.src" type="audio/mpeg">
       </audio>
     </div>
@@ -138,11 +138,6 @@ h2 {
 .translation {
   color: #4e4e4e;
   line-height: 34px;
-}
-
-
-audio {
-  display: none;
 }
 
 .player-action-bar {
