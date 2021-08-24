@@ -88,7 +88,7 @@ export default {
     const getCurrentTimeEverySecond = () => {
       setInterval(() => {
         currentTime.value = convertTime(audio.value.currentTime)
-        trackDuration.value = convertTime(audio.value.duration)
+        trackDuration.value = audio.value.duration ? convertTime(audio.value.duration) : '00:00'
         statusBarWidth.value = String(Math.round(audio.value.currentTime / audio.value.duration * 100)) + '%'
       }, 500)
     }
