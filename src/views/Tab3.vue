@@ -7,14 +7,22 @@
           <p>{{ selectedSong.name.persian }}</p>
         </div>
         <div class="player-action-bar">
-          <div class="status-bar"></div>
-          <ion-icon @click="musicChanger('next')" class="player-action-btn" :icon="playSkipForwardCircle"/>
-          <ion-icon @click="toggleAudio" v-show="!isPlaying" class="player-action-btn" :icon="playCircle"/>
-          <ion-icon @click="toggleAudio" v-show="isPlaying" class="player-action-btn" :icon="pauseCircle"/>
-          <ion-icon @click="musicChanger('back')" class="player-action-btn" :icon="playSkipBackCircle"/>
+          <div class="status-bar">
+            <div :style="{width:statusBarWidth}" class="inner-timer-status-bar"></div>
+          </div>
+          <div class="music-time-tracker">
+            <p>{{ trackDuration }}</p>
+            <p>{{ currentTime }}</p>
+          </div>
+          <div class="player-action-btn-section">
+            <ion-icon @click="musicChanger('next')" class="player-action-btn" :icon="playSkipForwardCircle"/>
+            <ion-icon @click="toggleAudio" v-show="!isPlaying" class="player-action-btn" :icon="playCircle"/>
+            <ion-icon @click="toggleAudio" v-show="isPlaying" class="player-action-btn" :icon="pauseCircle"/>
+            <ion-icon @click="musicChanger('back')" class="player-action-btn" :icon="playSkipBackCircle"/>
+          </div>
         </div>
       </div>
-      <audio class="ion-hide" preload="metadata" ref="audio">
+      <audio autoplay class="ion-hide" preload="metadata" ref="audio">
         <source :src="selectedSong.src" type="audio/mpeg">
       </audio>
     </div>
@@ -54,10 +62,35 @@ export default {
       src: ''
     })
     const isPlaying = ref(false)
+    const currentTime = ref('00:00')
+    const trackDuration = ref('00:00')
+    const statusBarWidth = ref('0%')
+
     const toggleAudio = () => {
       isPlaying.value = !isPlaying.value
       if (isPlaying.value === true) audio.value.play()
       else audio.value.pause()
+    }
+
+
+    const convertTime = (time: number) => {
+      let s: string = String(Math.floor(time % 60)) as string
+      let m: string = String(Math.floor((time / 60) % 60)) as string
+      if (Number(s) < 10) {
+        s = '0' + String(s);
+      }
+      if (Number(m) < 10) {
+        m = '0' + String(m);
+      }
+      return m + ':' + s;
+    }
+
+    const getCurrentTimeEverySecond = () => {
+      setInterval(() => {
+        currentTime.value = convertTime(audio.value.currentTime)
+        trackDuration.value = convertTime(audio.value.duration)
+        statusBarWidth.value = String(Math.round(audio.value.currentTime / audio.value.duration * 100)) + '%'
+      }, 500)
     }
     const reloadPlayer = () => {
       audio.value.load()
@@ -71,6 +104,7 @@ export default {
         Object.assign(selectedSong, contentData[0] as Song)
       }
       reloadPlayer()
+      getCurrentTimeEverySecond()
     })
 
     const musicChanger = (action: string) => {
@@ -90,7 +124,10 @@ export default {
       isPlaying,
       toggleAudio,
       musicChanger,
-      audio
+      audio,
+      currentTime,
+      trackDuration,
+      statusBarWidth
     }
   }
 }
@@ -163,10 +200,49 @@ h2 {
     height: 5px;
     background: white;
     margin: auto;
+    position: relative;
+    border-radius: 6px;
+
+    .inner-timer-status-bar {
+      background: var(--ion-color-primary);
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 5px;
+      border-radius: 6px;
+    }
   }
 
-  .player-action-btn {
-    margin: 10px 5% auto;
+  .music-time-tracker {
+    display: block;
+    width: 90%;
+    margin: auto auto 10px;
+
+    p {
+      font-size: 14px;
+      margin: 0;
+      padding: 0;
+
+      &:first-child {
+        float: right;
+      }
+
+      &:nth-child(2) {
+        float: left;
+      }
+    }
   }
+
+  .player-action-btn-section {
+    display: block;
+    margin: auto;
+    margin-top: 25px;
+
+    .player-action-btn {
+      margin: 10px 5% auto;
+    }
+  }
+
+
 }
 </style>

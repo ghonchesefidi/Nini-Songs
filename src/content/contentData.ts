@@ -13,7 +13,7 @@ const contentData = [
         id: '456',
         name: {
             persian: 'تست دو',
-            english: 'test one'
+            english: 'test two'
         },
         image: 'https://music-fa.com/wp-content/uploads/2021/06/Reza-Bahram-Music-fa.com_.jpg',
         translation: 'تست قسمت ترجمه',
@@ -23,7 +23,7 @@ const contentData = [
         id: '789',
         name: {
             persian: 'تست سه',
-            english: 'test one'
+            english: 'test three'
         },
         image: 'https://via.placeholder.com/500x500',
         translation: 'تست قسمت ترجمه',
