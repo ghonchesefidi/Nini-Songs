@@ -3,7 +3,7 @@
 		<img src="./public/assets/logo-main-big.png" width="200" />
 	</p>
 	<h1 align="center">Nini Songs</h1>
-	<p align="center">Nini Songs is a hybrid music player app for Persian kids to learn english and have fun.</p>
+	<p align="center">Nini Songs is a hybrid music player app for Persian kids to learn English and have fun.</p>
 
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ghonchesefidi/Nini-Songs/blob/master/LICENSE)
