@@ -12,6 +12,13 @@
 </div>
 <hr />
 
-    
+## Requirements
+-   [Ionic](https://ionicframework.com)
+-   [Vue 3](https://v3.vuejs.org)
+-   [TypeScript](https://www.typescriptlang.org)
+
+## Usage
+-   [Ionic Vue](https://ionicframework.com/vue)
+
 ## Contributing
 Thank you for your interest in contributing! Please feel free to put up a PR for any issue or feature request.
