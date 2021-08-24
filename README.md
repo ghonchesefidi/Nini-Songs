@@ -6,7 +6,7 @@
 	<p align="center">Nini Songs is a hybrid music player app for Persian kids to learn english and have fun.</p>
 
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ghonchesefidi/Nini-Songs/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ghonchesefidi/Nini-Songs/blob/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](https://github.com/ghonchesefidi/Nini-Songs/compare)
 [![GitHub contributors](https://img.shields.io/github/contributors/ghonchesefidi/Nini-Songs.svg)](https://github.com/ghonchesefidi/Nini-Songs/contributors/)
 </div>
