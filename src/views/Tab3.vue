@@ -8,10 +8,10 @@
         </div>
         <div class="player-action-bar">
           <div class="status-bar"></div>
-          <ion-icon class="player-action-btn" :icon="playSkipForwardCircle"/>
+          <ion-icon @click="musicChanger('next')" class="player-action-btn" :icon="playSkipForwardCircle"/>
           <ion-icon @click="toggleAudio" v-show="!isPlaying" class="player-action-btn" :icon="playCircle"/>
           <ion-icon @click="toggleAudio" v-show="isPlaying" class="player-action-btn" :icon="pauseCircle"/>
-          <ion-icon class="player-action-btn" :icon="playSkipBackCircle"/>
+          <ion-icon @click="musicChanger('back')" class="player-action-btn" :icon="playSkipBackCircle"/>
         </div>
       </div>
       <audio class="ion-hide" preload="metadata" ref="audio">
@@ -72,6 +72,14 @@ export default {
       }
       reloadPlayer()
     })
+
+    const musicChanger = (action: string) => {
+      const getCurrentSongIndex: number = contentData.findIndex(song => song.id === selectedSong.id)
+      const actionIndex: number = action === 'next' ? getCurrentSongIndex + 1 : getCurrentSongIndex - 1
+      Object.assign(selectedSong, contentData[actionIndex] as Song)
+      reloadPlayer()
+    }
+
     return {
       contentData,
       playCircle,
@@ -81,6 +89,7 @@ export default {
       playSkipBackCircle,
       isPlaying,
       toggleAudio,
+      musicChanger,
       audio
     }
   }
